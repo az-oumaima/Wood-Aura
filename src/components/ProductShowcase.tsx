@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Heart, Share2, Star } from 'lucide-react';
+import OrderModal from './OrderModal';
+import { useLanguage } from '../contexts/LanguageContext';
+import { Product } from '../types';
 
 interface ProductShowcaseProps {
   productImage?: string;
@@ -12,6 +15,7 @@ interface ProductShowcaseProps {
   features?: string[];
   onPurchase?: () => void;
   className?: string;
+  productId?: string;
 }
 
 export default function ProductShowcase({
@@ -29,10 +33,22 @@ export default function ProductShowcase({
     "Chiffres Romains Dorés"
   ],
   onPurchase,
-  className = ""
+  className = "",
+  productId
 }: ProductShowcaseProps) {
   const [isImageZoomed, setIsImageZoomed] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { language, t } = useLanguage();
+  let product: Product | undefined = undefined;
+  if (productId) {
+    try {
+      // Dynamically import products to avoid circular dependency
+      // @ts-ignore
+      const products = require('../data/products').products;
+      product = products.find((p: Product) => p.id === productId);
+    } catch {}
+  }
 
   const handleImageClick = () => {
     setIsImageZoomed(!isImageZoomed);
@@ -43,9 +59,7 @@ export default function ProductShowcase({
   };
 
   const handlePurchase = () => {
-    if (onPurchase) {
-      onPurchase();
-    }
+    setIsModalOpen(true);
   };
 
   return (
@@ -54,10 +68,10 @@ export default function ProductShowcase({
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Product Image Section */}
-            <div className="relative bg-gradient-to-br from-amber-50 to-stone-50 aspect-square lg:aspect-[4/3] lg:h-[500px] overflow-hidden">
-              <div className="absolute inset-6 bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div 
-                  className={`w-full h-full cursor-pointer transition-transform duration-700 ease-out flex items-center justify-center p-4 ${
+            <div className="relative bg-gradient-to-br from-amber-50 to-stone-50 aspect-square w-full max-w-xl mx-auto overflow-hidden flex items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden flex items-center justify-center p-4">
+                <div
+                  className={`cursor-pointer transition-transform duration-700 ease-out ${
                     isImageZoomed ? 'scale-125' : 'scale-100 hover:scale-110'
                   }`}
                   onClick={handleImageClick}
@@ -65,7 +79,7 @@ export default function ProductShowcase({
                   <img
                     src={productImage}
                     alt={productName}
-                    className="max-w-[80%] max-h-[80%] object-contain object-center rounded-lg shadow-sm"
+                    className="object-contain object-center rounded-lg shadow-sm max-w-full max-h-[400px]"
                   />
                 </div>
                 {isImageZoomed && (
@@ -79,9 +93,8 @@ export default function ProductShowcase({
                   </div>
                 )}
               </div>
-              
               {/* Floating Action Buttons */}
-              <div className="absolute top-8 right-8 flex flex-col space-y-3">
+              <div className="absolute top-2 right-2 flex flex-col space-y-3">
                 <button
                   onClick={toggleWishlist}
                   className={`p-3 rounded-full shadow-lg transition-all duration-200 ${
@@ -146,7 +159,7 @@ export default function ProductShowcase({
                       -{discount}%
                     </span>
                   </div>
-                  <p className="text-sm text-stone-500">Livraison gratuite dans tout le Maroc</p>
+                  <p className="text-sm text-stone-500">{t('store.free.delivery.full')}</p>
                 </div>
 
                 {/* Action Buttons */}
@@ -155,7 +168,7 @@ export default function ProductShowcase({
                     onClick={handlePurchase}
                     className="w-full bg-amber-700 text-white py-4 px-8 rounded-2xl font-semibold text-lg hover:bg-amber-800 transition-colors duration-200 shadow-lg hover:shadow-xl"
                   >
-                    Acheter Maintenant
+                    {language === 'ar' ? 'اطلب الآن' : 'Acheter Maintenant'}
                   </button>
                 </div>
 
@@ -163,20 +176,23 @@ export default function ProductShowcase({
                 <div className="pt-6 border-t border-stone-100">
                   <div className="grid grid-cols-2 gap-4 text-sm text-stone-600">
                     <div>
-                      <p className="font-semibold text-stone-900">Livraison Gratuite</p>
-                      <p>Partout au Maroc</p>
+                      <p className="font-semibold text-stone-900">{t('store.free.delivery')}</p>
+                      <p>{t('store.free.delivery.full')}</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-stone-900">Paiement</p>
-                      <p>À la livraison</p>
+                      <p className="font-semibold text-stone-900">{t('store.cash.delivery')}</p>
+                      <p>{t('store.cash.delivery.full')}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          {isModalOpen && product && (
+            <OrderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} product={product} />
+          )}
         </div>
       </div>
     </div>
   );
-}
+} 

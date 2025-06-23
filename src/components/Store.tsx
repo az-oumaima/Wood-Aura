@@ -4,13 +4,14 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { products } from '../data/products';
 import { Product } from '../types';
 import OrderModal from './OrderModal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Store = () => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const categories = [
     { id: 'all', label: t('store.all'), icon: null },
@@ -28,8 +29,14 @@ const Store = () => {
     setIsModalOpen(true);
   };
 
+  const handleCardClick = (product: Product) => {
+    if (product.qte > 0) {
+      navigate(`/showcase/${product.id}`);
+    }
+  };
+
   return (
-    <section id="store" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="store" className="pt-20 pb-20 bg-gradient-to-b from-white to-gray-50 mt-0">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-6">
@@ -66,6 +73,8 @@ const Store = () => {
             const cardContent = (
               <div
                 className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 flex flex-col h-full min-h-[540px]"
+                onClick={() => handleCardClick(product)}
+                style={{ cursor: isAvailable ? 'pointer' : 'default' }}
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -104,7 +113,7 @@ const Store = () => {
                     </div>
                   </div>
                   <button
-                    onClick={() => handleBuyClick(product)}
+                    onClick={(e) => { e.stopPropagation(); handleBuyClick(product); }}
                     disabled={product.qte === 0}
                     className={`w-full bg-gradient-to-r from-amber-600 to-emerald-600 text-white py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105
                       ${product.qte === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:from-amber-700 hover:to-emerald-700'}`}

@@ -39,7 +39,9 @@ const translations: { [lang: string]: { [key: string]: string } } = {
     'store.mad': 'درهم',
     'store.buy': 'اشتري الآن',
     'store.free.delivery': 'التوصيل بالمجان',
+    'store.free.delivery.full': 'التوصيل بالمجان إلى جميع المدن المغربية',
     'store.cash.delivery': 'الدفع عند الاستلام',
+    'store.cash.delivery.full': 'يمكنك الدفع عند استلام المنتج',
     
     // Order Form
     'order.title': 'اطلب منتجك',
@@ -100,7 +102,9 @@ const translations: { [lang: string]: { [key: string]: string } } = {
     'store.mad': 'MAD',
     'store.buy': 'Acheter',
     'store.free.delivery': 'Livraison gratuite',
+    'store.free.delivery.full': 'Livraison gratuite dans tout le Maroc',
     'store.cash.delivery': 'Paiement à la livraison',
+    'store.cash.delivery.full': 'Vous pouvez payer à la livraison',
     
     // Order Form
     'order.title': 'Commandez votre produit',
