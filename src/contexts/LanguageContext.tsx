@@ -38,7 +38,7 @@ const translations: { [lang: string]: { [key: string]: string } } = {
     'store.etageres': 'الرفوف',
     'store.mad': 'درهم',
     'store.buy': 'اشتري الآن',
-    'store.free.delivery': 'الشحن مجاني',
+    'store.free.delivery': 'التوصيل بالمجان',
     'store.cash.delivery': 'الدفع عند الاستلام',
     
     // Order Form
