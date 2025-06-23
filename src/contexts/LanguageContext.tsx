@@ -10,7 +10,7 @@ interface LanguageContextType {
 const translations: { [lang: string]: { [key: string]: string } } = {
   ar: {
     // Header
-    'header.delivery': 'التوصيل بالمجان',
+    'header.delivery': 'التوصيل بالمجان والدفع عند الاستلام',
 
     // Hero
     'hero.title': 'مصنوعة بعناية للحظات لا تُنسى',
