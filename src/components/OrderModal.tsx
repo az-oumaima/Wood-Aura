@@ -26,7 +26,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
       setFormData(prev => ({
         ...prev,
         productName: product.name[language],
-        productPrice: product.price
+        productPrice: product.discountedPrice
       }));
     }
   }, [product, language]);
@@ -69,7 +69,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
             city: '',
             message: '',
             productName: product?.name[language] || '',
-            productPrice: product?.price || 0
+            productPrice: product?.discountedPrice || 0
           });
           onClose();
         }, 3000);
@@ -86,7 +86,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
           city: '',
           message: '',
           productName: product?.name[language] || '',
-          productPrice: product?.price || 0
+          productPrice: product?.discountedPrice || 0
         });
         onClose();
       }, 3000);
@@ -124,7 +124,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
                   />
                   <div>
                     <h4 className="font-semibold text-gray-800">{product.name[language]}</h4>
-                    <p className="text-amber-600 font-bold">{product.price} {t('store.mad')}</p>
+                    <p className="text-amber-600 font-bold">{product.discountedPrice} {t('store.mad')}</p>
                   </div>
                 </div>
               </div>

@@ -10,7 +10,7 @@ interface LanguageContextType {
 const translations: { [lang: string]: { [key: string]: string } } = {
   ar: {
     // Header
-    'header.delivery': 'التوصيل مجاني والدفع عند الاستلام',
+    'header.delivery': 'التوصيل بالمجان',
 
     // Hero
     'hero.title': 'مصنوعة بعناية للحظات لا تُنسى',
@@ -31,7 +31,7 @@ const translations: { [lang: string]: { [key: string]: string } } = {
     
     // Store
     'store.title': 'متجرنا',
-    'store.subtitle': 'اكتشف مجموعتنا المميزة من القطع المصنوعة يدوياً',
+    'store.subtitle': 'مجموعة طاولات راتنج وخشب طبيعي',
     'store.all': 'الكل',
     'store.clocks': 'الساعات',
     'store.tables': 'الطاولات',

@@ -65,7 +65,7 @@ const Store = () => {
             const isAvailable = product.qte > 0;
             const cardContent = (
               <div
-                className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2"
+                className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:-translate-y-2 flex flex-col h-full min-h-[540px]"
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -86,11 +86,11 @@ const Store = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className={`text-xl font-serif font-bold text-gray-800 mb-2${isAvailable ? ' cursor-pointer hover:underline' : ''}`}>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className={`text-xl font-serif font-bold text-gray-800 mb-2${isAvailable ? ' cursor-pointer hover:underline' : ''}`}> 
                     {product.name[language]}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-gray-600 mb-4 leading-relaxed flex-1">
                     {product.description[language]}
                   </p>
                   <div className="flex items-center justify-between mb-4">
@@ -120,7 +120,7 @@ const Store = () => {
               </div>
             );
             return (
-              <div key={product.id}>
+              <div key={product.id} className="h-full">
                 {cardContent}
               </div>
             );
