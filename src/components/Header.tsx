@@ -39,7 +39,7 @@ const Header = () => {
               </span>
             </div>
             {/* Language Switcher */}
-            <div className="flex items-center space-x-2 ml-auto">
+            <div className={`flex items-center space-x-2 ${language === 'ar' ? '' : 'ml-auto'}`}>
               <Globe className="w-5 h-5 text-gray-600" />
               <div className="flex bg-gray-100 rounded-full p-1">
                 <button
