@@ -15,11 +15,11 @@ export const products: Product[] =
     {
       id: 'clock-1',
       name: {
-        ar: 'ساعة حائط خشب الجوز والراتنج',
+        ar: 'ساعة حائط – خلفية سوداء',
         fr: 'Horloge murale – fond noir'
       },
       description: {
-        ar: 'ساعة حائط فنية مع تصميم راتنج أزرق مذهل',
+        ar: 'ساعة حائط أنيقة بتباين قوي لمظهر فاخر.',
         fr: 'Une horloge murale chic avec un contraste intense pour un effet luxueux.'
       },
       discountedPrice: 399,
