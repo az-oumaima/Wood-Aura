@@ -31,7 +31,7 @@ const Hero = () => {
           {t('hero.subtitle')}
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pb-10">
           <button 
             onClick={scrollToStore}
             className="bg-gradient-to-r from-amber-700 to-amber-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-amber-800 hover:to-amber-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"

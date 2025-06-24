@@ -5,50 +5,24 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { Product } from '../types';
 
 interface ProductShowcaseProps {
-  productImage?: string;
-  productName?: string;
-  productDescription?: string;
-  originalPrice?: number;
-  currentPrice?: number;
-  discount?: number;
-  rating?: number;
-  features?: string[];
+  product: Product;
   onPurchase?: () => void;
   className?: string;
-  productId?: string;
+  features?: string[];
+  rating?: number;
 }
 
 export default function ProductShowcase({
-  productImage = "/photo1.jpg",
-  productName = "Horloge Murale en Résine Époxy",
-  productDescription = "Magnifique horloge murale artisanale en résine époxy de 40cm de diamètre. Chaque pièce est unique avec ses motifs naturels et ses nuances organiques qui apportent une touche d'élégance à votre intérieur.",
-  originalPrice = 700,
-  currentPrice = 499,
-  discount = 29,
-  rating = 4.8,
-  features = [
-    "Diamètre : 40cm",
-    "Matériau : Résine Époxy Premium", 
-    "Mécanisme Silencieux",
-    "Chiffres Romains Dorés"
-  ],
+  product,
   onPurchase,
   className = "",
-  productId
+  features = [],
+  rating = 4.8
 }: ProductShowcaseProps) {
   const [isImageZoomed, setIsImageZoomed] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { language, t } = useLanguage();
-  let product: Product | undefined = undefined;
-  if (productId) {
-    try {
-      // Dynamically import products to avoid circular dependency
-      // @ts-ignore
-      const products = require('../data/products').products;
-      product = products.find((p: Product) => p.id === productId);
-    } catch {}
-  }
 
   const handleImageClick = () => {
     setIsImageZoomed(!isImageZoomed);
@@ -61,6 +35,10 @@ export default function ProductShowcase({
   const handlePurchase = () => {
     setIsModalOpen(true);
   };
+
+  const discount = Math.round(
+    ((product.originalPrice - product.discountedPrice) / product.originalPrice) * 100
+  );
 
   return (
     <div className={`bg-gradient-to-br from-amber-50 to-stone-100 py-8 px-4 sm:py-12 sm:px-6 lg:px-8 ${className}`}>
@@ -77,8 +55,8 @@ export default function ProductShowcase({
                   onClick={handleImageClick}
                 >
                   <img
-                    src={productImage}
-                    alt={productName}
+                    src={product.image}
+                    alt={product.name[language]}
                     className="object-contain object-center rounded-lg shadow-sm max-w-full max-h-[400px]"
                   />
                 </div>
@@ -130,14 +108,14 @@ export default function ProductShowcase({
                 {/* Product Title */}
                 <div>
                   <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 leading-tight">
-                    {productName}
+                    {product.name[language]}
                   </h1>
                 </div>
 
                 {/* Description */}
                 <div className="space-y-4">
                   <p className="text-base text-stone-600 leading-relaxed">
-                    {productDescription}
+                    {product.description[language]}
                   </p>
                   
                   <div className="space-y-2">
@@ -153,8 +131,8 @@ export default function ProductShowcase({
                 {/* Price */}
                 <div className="space-y-2">
                   <div className="flex items-center space-x-4">
-                    <span className="text-3xl font-bold text-stone-900">{currentPrice} MAD</span>
-                    <span className="text-lg text-stone-500 line-through">{originalPrice} MAD</span>
+                    <span className="text-3xl font-bold text-stone-900">{product.discountedPrice} MAD</span>
+                    <span className="text-lg text-stone-500 line-through">{product.originalPrice} MAD</span>
                     <span className="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">
                       -{discount}%
                     </span>

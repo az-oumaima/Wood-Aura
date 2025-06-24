@@ -31,12 +31,12 @@ const Store = () => {
 
   const handleCardClick = (product: Product) => {
     if (product.qte > 0) {
-      navigate(`/showcase/${product.id}`);
+      navigate(`/product/${product.id}`);
     }
   };
 
   return (
-    <section id="store" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="store" className="pt-8 pb-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-6">

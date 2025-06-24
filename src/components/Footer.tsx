@@ -2,9 +2,20 @@ import React from 'react';
 import { Instagram, Phone, Mail, MapPin, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '../assets/logo.webp'; // Import the logo
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Otherwise, let Link do its job
+  };
 
   return (
     <footer className="bg-gradient-to-br from-gray-800 to-gray-900 text-white relative">
@@ -12,11 +23,13 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-10">
           {/* Brand Section */}
           <div className="lg:col-span-2 flex flex-col items-start">
+            <Link to="/" onClick={handleLogoClick}>
               <img
                 src={logo}
                 alt="Wood Aura Logo"
-                className="h-20 mb-4 w-auto "
+                className="h-20 mb-4 w-auto cursor-pointer"
               />
+            </Link>
             <p className="text-gray-300 mb-4 leading-relaxed max-w-md">
               {t('footer.description')}
             </p>

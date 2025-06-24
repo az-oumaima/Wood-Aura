@@ -7,11 +7,15 @@ import Store from './components/Store';
 import Footer from './components/Footer';
 import { FaWhatsapp } from 'react-icons/fa';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProductShowcase from './components/ProductShowcase';
+import ProductShowcasePage from './components/ProductShowcasePage';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <div className="min-h-screen">
           <Header />
           <Routes>
@@ -22,6 +26,8 @@ function App() {
                 <About />
               </>
             } />
+            <Route path="/product/:productId" element={<ProductShowcasePage />} />
+            <Route path="/showcase/:productId" element={<ProductShowcasePage />} />
           </Routes>
           <div className="relative">
             <Footer />
