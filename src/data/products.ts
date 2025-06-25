@@ -3,7 +3,7 @@ import table1 from '../assets/table 1.jpg';
 import table2 from '../assets/table2.jpg';
 import table3 from '../assets/table3.jpg';
 import c1 from '../assets/photo2.jpg';
-import c2 from '../assets/2.jpg';
+import c2 from '../assets/c22.jpg';
 import c3 from '../assets/3.jpg';
 import plato from '../assets/plato.jpg';
 import pres from '../assets/pres.jpg';
@@ -38,11 +38,11 @@ export const products: Product[] =
         ar: 'ساعة طاولة أنيقة مع لمسات راتنج ذهبية',
         fr: 'Horloge de table élégante avec touches résine dorée'
       },
-      discountedPrice: 499,
-      originalPrice: 799,
+      discountedPrice: 399,
+      originalPrice: 699,
       image: c2,
       category: 'clocks',
-      qte: 0
+      qte: 3
     },
     {
       id: 'clock-3',
