@@ -66,7 +66,7 @@ export const products: Product[] =
         ar: 'ساعة حائط طبيعية من خشب الزيتون المغربي',
         fr: 'Horloge murale naturelle en bois d\'olivier marocain'
       },
-      discountedPrice: 399,
+      discountedPrice: 299,
       originalPrice: 599,
       image: c3,
       category: 'clocks',
