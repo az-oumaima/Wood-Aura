@@ -8,6 +8,16 @@ import c3 from '../assets/3.jpg';
 import plato from '../assets/plato.jpg';
 import pres from '../assets/pres.jpg';
 import shel from '../assets/shelves.jpg';
+import black1 from '../assets/Black/1.jpg';
+import black2 from '../assets/Black/2.jpg';
+import black3 from '../assets/Black/3.jpg';
+import black4 from '../assets/Black/4.jpg';
+import black5 from '../assets/Black/5.jpg';
+import gold1 from '../assets/gold/1.jpg';
+import gold2 from '../assets/gold/2.jpg';
+import gold3 from '../assets/gold/3.jpg';
+import gold4 from '../assets/gold/4.jpg';
+import gold5 from '../assets/gold/5.jpg';
 
 export const products: Product[] = 
   // Clocks
@@ -25,6 +35,7 @@ export const products: Product[] =
       discountedPrice: 399,
       originalPrice: 699,
       image: c1,
+      images: [black1, black2, black4],
       category: 'clocks',
       qte: 4
     },
@@ -41,6 +52,7 @@ export const products: Product[] =
       discountedPrice: 399,
       originalPrice: 699,
       image: c2,
+      images: [gold5, gold2, gold3, gold4],
       category: 'clocks',
       qte: 3
     },

@@ -22,7 +22,20 @@ export default function ProductShowcase({
   const [isImageZoomed, setIsImageZoomed] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const { language, t } = useLanguage();
+
+  const images = product.images && product.images.length > 0 ? product.images : [product.image];
+  const currentImg = images[carouselIndex];
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCarouselIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCarouselIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   const handleImageClick = () => {
     setIsImageZoomed(!isImageZoomed);
@@ -46,8 +59,8 @@ export default function ProductShowcase({
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Product Image Section */}
-            <div className="relative bg-gradient-to-br from-amber-50 to-stone-50 aspect-square w-full max-w-xl mx-auto overflow-hidden flex items-center justify-center">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden flex items-center justify-center p-4">
+            <div className="relative bg-gradient-to-br from-amber-50 to-stone-50 aspect-square w-full max-w-2xl mx-auto overflow-hidden flex flex-col items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden flex items-center justify-center p-4 w-full min-h-[320px] sm:min-h-[360px] lg:min-h-[400px]">
                 <div
                   className={`cursor-pointer transition-transform duration-700 ease-out ${
                     isImageZoomed ? 'scale-125' : 'scale-100 hover:scale-110'
@@ -55,9 +68,9 @@ export default function ProductShowcase({
                   onClick={handleImageClick}
                 >
                   <img
-                    src={product.image}
+                    src={currentImg}
                     alt={product.name[language]}
-                    className="object-contain object-center rounded-lg shadow-sm max-w-full max-h-[400px]"
+                    className="object-contain object-center rounded-2xl shadow-lg max-w-full max-h-[260px] sm:max-h-[320px] lg:max-h-[360px] w-auto h-auto mx-auto"
                   />
                 </div>
                 {isImageZoomed && (
@@ -71,6 +84,30 @@ export default function ProductShowcase({
                   </div>
                 )}
               </div>
+              {/* Thumbnails */}
+              {images.length > 1 && (
+                <div className="flex flex-row gap-3 mt-4 justify-center">
+                  {images.map((img, idx) => (
+                    <button
+                      key={img}
+                      onClick={() => setCarouselIndex(idx)}
+                      className={`border-2 rounded-lg p-0.5 transition-all duration-200 focus:outline-none ${
+                        idx === carouselIndex
+                          ? 'border-amber-600 shadow-lg'
+                          : 'border-transparent opacity-70 hover:opacity-100'
+                      }`}
+                      style={{ background: '#fff' }}
+                      aria-label={`Voir l'image ${idx + 1}`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className="w-16 h-16 object-contain rounded-md"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
               {/* Floating Action Buttons */}
               <div className="absolute top-2 right-2 flex flex-col space-y-3">
                 <button

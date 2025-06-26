@@ -12,6 +12,7 @@ export interface Product {
   discountedPrice: number;
   price?: number;
   image: string;
+  images?: string[];
   category: 'clocks' | 'tables' | 'etageres';
   qte: number;
 }
