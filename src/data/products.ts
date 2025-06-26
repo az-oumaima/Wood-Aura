@@ -32,7 +32,7 @@ export const products: Product[] =
         ar: 'ساعة حائط أنيقة بتباين قوي لمظهر فاخر.',
         fr: 'Une horloge murale chic avec un contraste intense pour un effet luxueux.'
       },
-      discountedPrice: 399,
+      discountedPrice: 299,
       originalPrice: 699,
       image: c1,
       images: [black1, black2, black4],
@@ -49,7 +49,7 @@ export const products: Product[] =
         ar: 'ساعة طاولة أنيقة مع لمسات راتنج ذهبية',
         fr: 'Horloge de table élégante avec touches résine dorée'
       },
-      discountedPrice: 399,
+      discountedPrice: 299,
       originalPrice: 699,
       image: c2,
       images: [gold5, gold2, gold3, gold4],
