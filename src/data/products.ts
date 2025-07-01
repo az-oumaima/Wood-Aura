@@ -10,14 +10,16 @@ import pres from '../assets/pres.jpg';
 import shel from '../assets/shelves.jpg';
 import black1 from '../assets/Black/1.jpg';
 import black2 from '../assets/Black/2.jpg';
-import black3 from '../assets/Black/3.jpg';
 import black4 from '../assets/Black/4.jpg';
-import black5 from '../assets/Black/5.jpg';
-import gold1 from '../assets/gold/1.jpg';
 import gold2 from '../assets/gold/2.jpg';
 import gold3 from '../assets/gold/3.jpg';
 import gold4 from '../assets/gold/4.jpg';
 import gold5 from '../assets/gold/5.jpg';
+import ocs1 from '../assets/ocs/1.jpg';
+import ocs2 from '../assets/ocs/2.jpg';
+import ocs3 from '../assets/ocs/3.jpg';
+
+
 
 export const products: Product[] = 
   // Clocks
@@ -59,18 +61,19 @@ export const products: Product[] =
     {
       id: 'clock-3',
       name: {
-        ar: 'ساعة حائط خشب الزيتون',
-        fr: 'Horloge Murale Bois d\'Olivier'
+        ar: 'ساعة أبطال OCS — كأس العرش 2025',
+        fr: 'Horloge Champions OCS — Coupe du Trône 2025'
       },
       description: {
-        ar: 'ساعة حائط طبيعية من خشب الزيتون المغربي',
-        fr: 'Horloge murale naturelle en bois d\'olivier marocain'
+        ar: 'خلّدوا الانتصار التاريخي لنادي أولمبيك آسفي مع هذه الساعة الفريدة، تكريمًا لأبطال اللقب.',
+        fr: 'Immortalisez la victoire historique de l’Olympique Club de Safi avec cette horloge unique, hommage aux héros du titre.'
       },
-      discountedPrice: 299,
+      discountedPrice: 259,
       originalPrice: 599,
-      image: c3,
+      image: ocs1,
+      images: [ocs1, ocs2, ocs3],
       category: 'clocks',
-      qte: 0
+      qte: 5
     },
   
     // Tables
