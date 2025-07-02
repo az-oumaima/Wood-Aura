@@ -68,7 +68,7 @@ export const products: Product[] =
         ar: 'خلّدوا الانتصار التاريخي لنادي أولمبيك آسفي مع هذه الساعة الفريدة، تكريمًا لأبطال اللقب.',
         fr: 'Immortalisez la victoire historique de l’Olympique Club de Safi avec cette horloge unique, hommage aux héros du titre.'
       },
-      discountedPrice: 259,
+      discountedPrice: 199,
       originalPrice: 599,
       image: ocs1,
       images: [ocs1, ocs2, ocs3],
