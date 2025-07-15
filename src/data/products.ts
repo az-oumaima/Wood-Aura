@@ -18,6 +18,10 @@ import gold5 from '../assets/gold/5.jpg';
 import ocs1 from '../assets/ocs/1.jpg';
 import ocs2 from '../assets/ocs/2.jpg';
 import ocs3 from '../assets/ocs/3.jpg';
+import tr1 from '../assets/trad/0.jpg';
+import tr2 from '../assets/trad/1.jpg';
+import tr3 from '../assets/trad/2.jpg';
+import tr4 from '../assets/trad/3.jpg'
 
 
 
@@ -40,6 +44,23 @@ export const products: Product[] =
       images: [black1, black2, black4],
       category: 'clocks',
       qte: 4
+    },
+    {
+      id: 'clock-4',
+      name: {
+        ar: 'ساعة حائط بزخارف الزليج والسجاد الأمازيغي',
+        fr: 'Horloge Murale Zellige & Tapis Berbère'
+      },
+      description: {
+        ar: 'تحفة فنية تجمع بين جمالية الزليج المغربي التقليدي وسحر النقوش الأمازيغية الأصيلة.',
+        fr: 'Une création artistique unique mêlant la géométrie des zelliges marocains au charme des tapis berbères, pour une déco riche en culture.'
+      },
+      discountedPrice: 249,
+      originalPrice: 599,
+      image: tr1,
+      images: [tr1, tr2, tr3, tr4],
+      category: 'clocks',
+      qte: 5
     },
     {
       id: 'clock-2',
@@ -75,6 +96,7 @@ export const products: Product[] =
       category: 'clocks',
       qte: 5
     },
+
   
     // Tables
     {
